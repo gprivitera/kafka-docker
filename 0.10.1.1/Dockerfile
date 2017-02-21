@@ -16,8 +16,8 @@ ENV KAFKA_USER=kafka \
 
 RUN set -x \
     && adduser -D "$KAFKA_USER" \
-    && mkdir -p "$KAFKA_CONF_DIR" "KAFKA_LOGS_DIR" \
-    && chown "$KAFKA_USER:$KAFKA_USER" "$KAFKA_CONF_DIR" "KAFKA_LOGS_DIR"
+    && mkdir -p "$KAFKA_CONF_DIR" "$KAFKA_LOGS_DIR" \
+    && chown "$KAFKA_USER:$KAFKA_USER" "$KAFKA_CONF_DIR" "$KAFKA_LOGS_DIR"
 
 ARG GPG_KEY=6370E6D65FE1D8437C4CF905A6ECA8953B417B9B
 ARG DISTRO_NAME=kafka_2.11-0.10.1.1
@@ -36,7 +36,7 @@ RUN set -x \
     && apk del .build-deps
 
 WORKDIR $DISTRO_NAME
-VOLUME ["$KAFKA_CONF_DIR", "KAFKA_LOGS_DIR"]
+VOLUME ["$KAFKA_LOGS_DIR"]
 
 EXPOSE $KAFKA_PORT
 
@@ -45,4 +45,4 @@ ENV PATH=$PATH:/$DISTRO_NAME/bin \
 
 COPY docker-entrypoint.sh /
 ENTRYPOINT ["/docker-entrypoint.sh"]
-CMD ["kafka-server-start.sh"]
+CMD ["kafka-server-start.sh", "/config/server.properties"]
