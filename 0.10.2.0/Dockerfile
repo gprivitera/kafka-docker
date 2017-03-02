@@ -19,7 +19,6 @@ RUN set -x \
     && mkdir -p "$KAFKA_CONF_DIR" "$KAFKA_LOGS_DIR" \
     && chown "$KAFKA_USER:$KAFKA_USER" "$KAFKA_CONF_DIR" "$KAFKA_LOGS_DIR"
 
-ARG GPG_KEY=6370E6D65FE1D8437C4CF905A6ECA8953B417B9B
 ARG DISTRO_NAME=kafka_2.12-0.10.2.0
 ARG VERSION=0.10.2.0
 
@@ -29,7 +28,8 @@ RUN set -x \
     && wget -q "http://www.apache.org/dist/kafka/$VERSION/$DISTRO_NAME.tgz" \
     && wget -q "http://www.apache.org/dist/kafka/$VERSION/$DISTRO_NAME.tgz.asc" \
     && export GNUPGHOME="$(mktemp -d)" \
-    && gpg --keyserver ha.pool.sks-keyservers.net --recv-key "$GPG_KEY" \
+    && wget -q "http://kafka.apache.org/KEYS" \
+    && gpg --import "KEYS" \
     && gpg --batch --verify "$DISTRO_NAME.tgz.asc" "$DISTRO_NAME.tgz" \
     && tar -xzf "$DISTRO_NAME.tgz" \
     && rm -r "$GNUPGHOME" "$DISTRO_NAME.tgz" "$DISTRO_NAME.tgz.asc" \
