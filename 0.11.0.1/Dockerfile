@@ -30,6 +30,7 @@ RUN set -x \
     && export GNUPGHOME="$(mktemp -d)" \
     && wget -q "http://kafka.apache.org/KEYS" \
     && gpg --import "KEYS" \
+    && gpg --keyserver pgpkeys.mit.edu --recv-key 4B606607518830CF \
     && gpg --batch --verify "$DISTRO_NAME.tgz.asc" "$DISTRO_NAME.tgz" \
     && tar -xzf "$DISTRO_NAME.tgz" \
     && rm -r "$GNUPGHOME" "$DISTRO_NAME.tgz" "$DISTRO_NAME.tgz.asc" \
