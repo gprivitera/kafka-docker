@@ -1,6 +1,7 @@
 # Supported tags and respective `Dockerfile` links
 
-* `0.10.2.0`, `0.10.2`, `latest` [(0.10.2.0/Dockerfile)](https://github.com/gprivitera/kafka-docker/blob/master/0.10.2.0/Dockerfile)
+* `0.11.0.1`, `0.11.0`, `latest` [(0.11.0.1/Dockerfile)](https://github.com/gprivitera/kafka-docker/blob/master/0.11.0.1/Dockerfile)
+* `0.10.2.0`, `0.10.2`, [(0.10.2.0/Dockerfile)](https://github.com/gprivitera/kafka-docker/blob/master/0.10.2.0/Dockerfile)
 * `0.10.1.1`, `0.10.1`, [(0.10.1.1/Dockerfile)](https://github.com/gprivitera/kafka-docker/blob/master/0.10.1.1/Dockerfile)
 
 # What is Apache Kafka?
