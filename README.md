@@ -1,8 +1,8 @@
 # Supported tags and respective `Dockerfile` links
 
-* `0.11.0.1`, `0.11.0`, `latest` [(0.11.0.1/Dockerfile)](https://github.com/gprivitera/kafka-docker/blob/master/0.11.0.1/Dockerfile)
-* `0.10.2.0`, `0.10.2`, [(0.10.2.0/Dockerfile)](https://github.com/gprivitera/kafka-docker/blob/master/0.10.2.0/Dockerfile)
-* `0.10.1.1`, `0.10.1`, [(0.10.1.1/Dockerfile)](https://github.com/gprivitera/kafka-docker/blob/master/0.10.1.1/Dockerfile)
+* `1.0.0`, `latest` [(1.0.0/Dockerfile)](https://github.com/gprivitera/kafka-docker/blob/master/1.0.0/Dockerfile)
+* `0.11.0.2`, `0.11.0`, [(0.11.0.2/Dockerfile)](https://github.com/gprivitera/kafka-docker/blob/master/0.11.0.2/Dockerfile)
+* `0.10.2.1`, `0.10.2`, [(0.10.2.1/Dockerfile)](https://github.com/gprivitera/kafka-docker/blob/master/0.10.2.1/Dockerfile)
 
 # What is Apache Kafka?
 
@@ -90,4 +90,4 @@ Sets Kafka's `default.replication.factor`
 
 # License
 
-View [license information](https://github.com/apache/kafka/blob/0.10.1.1/LICENSE) for the software contained in this image.
+View [license information](https://github.com/apache/kafka/blob/master/LICENSE) for the software contained in this image.
