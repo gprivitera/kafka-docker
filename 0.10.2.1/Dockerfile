@@ -19,18 +19,13 @@ RUN set -x \
     && mkdir -p "$KAFKA_CONF_DIR" "$KAFKA_LOGS_DIR" \
     && chown "$KAFKA_USER:$KAFKA_USER" "$KAFKA_CONF_DIR" "$KAFKA_LOGS_DIR"
 
-ARG GPG_KEY=6370E6D65FE1D8437C4CF905A6ECA8953B417B9B
-ARG DISTRO_NAME=kafka_2.11-0.10.1.1
-ARG VERSION=0.10.1.1
+ARG DISTRO_NAME=kafka_2.12-0.10.2.1
+ARG VERSION=0.10.2.1
 
 RUN set -x \
-    && apk add --no-cache --virtual .build-deps \
-        gnupg \
     && wget -q "http://www.apache.org/dist/kafka/$VERSION/$DISTRO_NAME.tgz" \
-    && wget -q "http://www.apache.org/dist/kafka/$VERSION/$DISTRO_NAME.tgz.asc" \
     && tar -xzf "$DISTRO_NAME.tgz" \
-    && rm -r "$DISTRO_NAME.tgz" "$DISTRO_NAME.tgz.asc" \
-    && apk del .build-deps
+    && rm -r "$DISTRO_NAME.tgz" \
 
 WORKDIR $DISTRO_NAME
 VOLUME ["$KAFKA_LOGS_DIR"]

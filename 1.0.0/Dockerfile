@@ -24,13 +24,9 @@ ARG DISTRO_NAME=kafka_2.12-1.0.0
 ARG VERSION=1.0.0
 
 RUN set -x \
-    && apk add --no-cache --virtual .build-deps \
-        gnupg \
     && wget -q "http://www.apache.org/dist/kafka/$VERSION/$DISTRO_NAME.tgz" \
-    && wget -q "http://www.apache.org/dist/kafka/$VERSION/$DISTRO_NAME.tgz.asc" \
     && tar -xzf "$DISTRO_NAME.tgz" \
-    && rm -r "$DISTRO_NAME.tgz" "$DISTRO_NAME.tgz.asc" \
-    && apk del .build-deps
+    && rm -r "$DISTRO_NAME.tgz" \
 
 WORKDIR $DISTRO_NAME
 VOLUME ["$KAFKA_LOGS_DIR"]
