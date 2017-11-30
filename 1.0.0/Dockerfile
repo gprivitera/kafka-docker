@@ -26,7 +26,7 @@ ARG VERSION=1.0.0
 RUN set -x \
     && wget -q "http://www.apache.org/dist/kafka/$VERSION/$DISTRO_NAME.tgz" \
     && tar -xzf "$DISTRO_NAME.tgz" \
-    && rm -r "$DISTRO_NAME.tgz" \
+    && rm -r "$DISTRO_NAME.tgz"
 
 WORKDIR $DISTRO_NAME
 VOLUME ["$KAFKA_LOGS_DIR"]
