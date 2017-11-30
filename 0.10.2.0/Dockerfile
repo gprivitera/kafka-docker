@@ -27,12 +27,8 @@ RUN set -x \
         gnupg \
     && wget -q "http://www.apache.org/dist/kafka/$VERSION/$DISTRO_NAME.tgz" \
     && wget -q "http://www.apache.org/dist/kafka/$VERSION/$DISTRO_NAME.tgz.asc" \
-    && export GNUPGHOME="$(mktemp -d)" \
-    && wget -q "http://kafka.apache.org/KEYS" \
-    && gpg --import "KEYS" \
-    && gpg --batch --verify "$DISTRO_NAME.tgz.asc" "$DISTRO_NAME.tgz" \
     && tar -xzf "$DISTRO_NAME.tgz" \
-    && rm -r "$GNUPGHOME" "$DISTRO_NAME.tgz" "$DISTRO_NAME.tgz.asc" \
+    && rm -r "$DISTRO_NAME.tgz" "$DISTRO_NAME.tgz.asc" \
     && apk del .build-deps
 
 WORKDIR $DISTRO_NAME

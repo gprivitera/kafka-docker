@@ -19,21 +19,16 @@ RUN set -x \
     && mkdir -p "$KAFKA_CONF_DIR" "$KAFKA_LOGS_DIR" \
     && chown "$KAFKA_USER:$KAFKA_USER" "$KAFKA_CONF_DIR" "$KAFKA_LOGS_DIR"
 
-ARG DISTRO_NAME=kafka_2.12-0.11.0.1
-ARG VERSION=0.11.0.1
+ARG DISTRO_NAME=kafka_2.12-1.0.0
+ARG VERSION=1.0.0
 
 RUN set -x \
     && apk add --no-cache --virtual .build-deps \
         gnupg \
     && wget -q "http://www.apache.org/dist/kafka/$VERSION/$DISTRO_NAME.tgz" \
     && wget -q "http://www.apache.org/dist/kafka/$VERSION/$DISTRO_NAME.tgz.asc" \
-    && export GNUPGHOME="$(mktemp -d)" \
-    && wget -q "http://kafka.apache.org/KEYS" \
-    && gpg --import "KEYS" \
-    && gpg --keyserver pgpkeys.mit.edu --recv-key 4B606607518830CF \
-    && gpg --batch --verify "$DISTRO_NAME.tgz.asc" "$DISTRO_NAME.tgz" \
     && tar -xzf "$DISTRO_NAME.tgz" \
-    && rm -r "$GNUPGHOME" "$DISTRO_NAME.tgz" "$DISTRO_NAME.tgz.asc" \
+    && rm -r "$DISTRO_NAME.tgz" "$DISTRO_NAME.tgz.asc" \
     && apk del .build-deps
 
 WORKDIR $DISTRO_NAME
