@@ -11,6 +11,7 @@ if [ ! -f "$KAFKA_CONF_DIR/server.properties" ]; then
     echo "log.dirs=$KAFKA_LOGS_DIR" >> "$CONFIG"
     echo "num.partitions=$KAFKA_NUM_PARTITIONS" >> "$CONFIG"
     echo "default.replication.factor=$KAFKA_DEFAULT_REPLICATION_FACTOR" >> "$CONFIG"
+    echo "offsets.topic.replication.factor=$KAFKA_OFFSET_TOPIC_REPLICATION_FACTOR" >> "$CONFIG"
 
     if [ ! -z "$KAFKA_LISTENERS" ]; then
         echo "listers=$KAFKA_LISTENERS" >> "$CONFIG"
