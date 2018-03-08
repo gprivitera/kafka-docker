@@ -28,6 +28,15 @@ if [ ! -f "$KAFKA_CONF_DIR/server.properties" ]; then
     if [ ! -z "$KAFKA_ADVERTISED_LISTENERS" ]; then
         echo "advertised.listeners=$KAFKA_ADVERTISED_LISTENERS" >> "$CONFIG"
     fi
+    
+    if [ ! -z "$KAFKA_ADVERTISED_HOST_NAME" ]; then
+      KAFKA_JMX_OPTS="-Dcom.sun.management.jmxremote=true"
+      KAFKA_JMX_OPTS="$KAFKA_JMX_OPTS -Dcom.sun.management.jmxremote.authenticate=false"
+      KAFKA_JMX_OPTS="$KAFKA_JMX_OPTS -Dcom.sun.management.jmxremote.ssl=false"
+      KAFKA_JMX_OPTS="$KAFKA_JMX_OPTS -Dcom.sun.management.jmxremote.rmi.port=$JMX_PORT"
+      KAFKA_JMX_OPTS="$KAFKA_JMX_OPTS -Djava.rmi.server.hostname=$KAFKA_ADVERTISED_HOST_NAME"
+      export KAFKA_JMX_OPTS
+    fi
 fi
 
 exec "$@"
