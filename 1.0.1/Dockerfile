@@ -21,8 +21,8 @@ RUN set -x \
     && mkdir -p "$KAFKA_CONF_DIR" "$KAFKA_LOGS_DIR" \
     && chown "$KAFKA_USER:$KAFKA_USER" "$KAFKA_CONF_DIR" "$KAFKA_LOGS_DIR"
 
-ARG DISTRO_NAME=kafka_2.12-1.0.0
-ARG VERSION=1.0.0
+ARG DISTRO_NAME=kafka_2.12-1.0.1
+ARG VERSION=1.0.1
 
 RUN set -x \
     && wget -q "http://www.apache.org/dist/kafka/$VERSION/$DISTRO_NAME.tgz" \
