@@ -1,6 +1,6 @@
 # Supported tags and respective `Dockerfile` links
 
-* `1.0.0`, `latest` [(1.0.0/Dockerfile)](https://github.com/gprivitera/kafka-docker/blob/master/1.0.0/Dockerfile)
+* `1.0.1`, `latest` [(1.0.1/Dockerfile)](https://github.com/gprivitera/kafka-docker/blob/master/1.0.1/Dockerfile)
 * `0.11.0.2`, `0.11.0`, [(0.11.0.2/Dockerfile)](https://github.com/gprivitera/kafka-docker/blob/master/0.11.0.2/Dockerfile)
 * `0.10.2.1`, `0.10.2`, [(0.10.2.1/Dockerfile)](https://github.com/gprivitera/kafka-docker/blob/master/0.10.2.1/Dockerfile)
 
