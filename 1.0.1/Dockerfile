@@ -1,5 +1,4 @@
 FROM openjdk:8-jre-alpine
-MAINTAINER Gianluca Privitera <gpriviter4@gmail.com>
 
 RUN apk add --no-cache \
     bash \
